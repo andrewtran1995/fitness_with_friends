@@ -1,0 +1,38 @@
+apply plugin: 'com.android.application'
+
+android {
+    compileSdkVersion 23
+    buildToolsVersion "23.0.2"
+
+    defaultConfig {
+        applicationId "com.summer2016.stayfitwithmimi.fitnesswithfriends"
+        minSdkVersion 22
+        targetSdkVersion 23
+        versionCode 1
+        versionName "1.0"
+    }
+    buildTypes {
+        release {
+            minifyEnabled false
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+    }
+}
+
+dependencies {
+    compile fileTree(dir: 'libs', include: ['*.jar'])
+    testCompile 'junit:junit:4.12'
+    compile 'com.android.support:appcompat-v7:23.0.0'
+    // butterknife allows field/method binding to view objects, keeping
+    // the code much cleaner: http://jakewharton.github.io/butterknife/
+    compile 'com.jakewharton:butterknife-compiler:8.1.0'
+    // Sugar ORM provides a object relational mapping (i.e. provides database
+    // entities as objects so you can easily work with them):
+    // http://satyan.github.io/sugar/
+    compile 'com.github.satyan:sugar:1.4'
+}
+
+// needed to resolve issue with appcompat-v7 dependency
+configurations.all {
+    resolutionStrategy.force 'com.android.support:support-annotations:23.0.1'
+}
